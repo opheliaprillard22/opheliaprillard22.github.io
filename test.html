@@ -2,8 +2,15 @@
  <head>
  </head>
  <body>
-  <script src="https://www.puck-js.com/puck.js"></script>
-  <button onclick="Puck.write('LED1.set();\n');">LED On!</button>
-  <button onclick="Puck.write('LED1.reset();\n');">LED Off!</button>
+  <script src="https://www.espruino.com/js/uart.js"></script>
+  <script>
+  function getTemperature() {
+    UART.eval('E.getTemperature()', function(t) {
+      document.getElementById("result").innerHTML = t;
+    });
+  }
+  </script>
+  <button onclick="getTemperature()">Get Temperature</button>
+  <span id="result"></span>
  </body>
 </html>
